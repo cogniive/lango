@@ -1,0 +1,1091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lango - Documentation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background: #f8fafc;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 280px;
+            height: 100vh;
+            background: white;
+            padding: 30px 20px;
+            overflow-y: auto;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+            z-index: 100;
+            border-right: 2px solid #e2e8f0;
+        }
+
+        .sidebar h3 {
+            color: #16a34a;
+            margin-bottom: 25px;
+            font-size: 1.4em;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 8px;
+        }
+
+        .sidebar ul li a {
+            color: #64748b;
+            text-decoration: none;
+            display: block;
+            padding: 10px 16px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            font-size: 0.95em;
+        }
+
+        .sidebar ul li a:hover {
+            background: #f0fdf4;
+            color: #16a34a;
+            transform: translateX(4px);
+        }
+
+        .sidebar ul li a.active {
+            background: #dcfce7;
+            color: #16a34a;
+        }
+
+        .main-content {
+            margin-left: 300px;
+            background: white;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+            margin-top: 20px;
+            margin-right: 20px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section h2 {
+            color: #16a34a;
+            font-size: 2.5em;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 4px solid #16a34a;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .section h3 {
+            color: #059669;
+            font-size: 1.75em;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .section h4 {
+            color: #334155;
+            font-size: 1.3em;
+            margin-top: 25px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .section p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: #475569;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 25px 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            border: 2px solid #334155;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        .inline-code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            color: #16a34a;
+            font-size: 0.9em;
+            border: 1px solid #e2e8f0;
+            font-weight: 600;
+        }
+
+        .alert {
+            padding: 18px 24px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 4px solid;
+            font-weight: 600;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #166534;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin: 30px 0;
+        }
+
+        .feature-card {
+            background: #f8fafc;
+            padding: 28px;
+            border-radius: 16px;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+            border-color: #22c55e;
+        }
+
+        .feature-card h4 {
+            color: #16a34a;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: #64748b;
+            font-size: 0.95em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        table th,
+        table td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        table th {
+            background: #16a34a;
+            color: white;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.05em;
+        }
+
+        table tr:hover {
+            background: #f8fafc;
+        }
+
+        table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #22c55e;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            margin: 12px 12px 12px 0;
+            font-weight: 700;
+            border: none;
+            border-bottom: 4px solid #16a34a;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            border-bottom: 2px solid #16a34a;
+            transform: translateY(0);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: #22c55e;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 36px;
+            font-weight: 800;
+            margin-right: 12px;
+            border-bottom: 3px solid #16a34a;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+            .main-content {
+                margin-left: 0;
+                margin-right: 0;
+                padding: 30px 20px;
+            }
+            header h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 25px 0;
+        }
+
+        .tech-badge {
+            background: #22c55e;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 24px;
+            font-size: 0.9em;
+            font-weight: 700;
+            border-bottom: 3px solid #16a34a;
+        }
+
+        .screenshot {
+            max-width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2);
+            margin: 25px 0;
+            border: 2px solid #e2e8f0;
+        }
+
+        ul, ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        ul li, ol li {
+            margin-bottom: 10px;
+            color: #475569;
+        }
+
+        strong {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        a {
+            color: #16a34a;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #22c55e;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h3>📚 Documentation</h3>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="#requirements">Requirements</a></li>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#configuration">Configuration</a></li>
+            <li><a href="#database">Database Setup</a></li>
+            <li><a href="#admin-panel">Admin Panel</a></li>
+            <li><a href="#usage">Usage Guide</a></li>
+            <li><a href="#customization">Customization</a></li>
+            <li><a href="#deployment">Deployment</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#api">API Reference</a></li>
+            <li><a href="#support">Support</a></li>
+        </ul>
+    </div>
+
+    <header>
+        <h1>🦜 Lango</h1>
+        <p>Interactive Language Learning Platform</p>
+        <p style="font-size: 1em; margin-top: 10px; opacity: 0.9;">Complete Documentation Guide</p>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Introduction -->
+            <section id="introduction" class="section">
+                <h2>📖 Introduction</h2>
+                <p>Welcome to <strong>Lango</strong>, a modern, interactive language learning platform built with Next.js 14, inspired by Duolingo. This application provides an engaging way for users to learn new languages through interactive challenges, gamification, and a beautiful user interface.</p>
+                
+                <div class="alert alert-info">
+                    <strong>💡 Note:</strong> This is a complete, production-ready application with authentication, database integration, admin panel, and payment processing capabilities.
+                </div>
+
+                <p>Lango offers a comprehensive learning experience with features like progress tracking, leaderboards, hearts system, shop functionality, and subscription management through Stripe.</p>
+            </section>
+
+            <!-- Features -->
+            <section id="features" class="section">
+                <h2>✨ Features</h2>
+                
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>🔐 Authentication</h4>
+                        <p>Secure user authentication powered by Clerk with social login support</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎮 Interactive Learning</h4>
+                        <p>Engaging challenges with SELECT and ASSIST question types</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>❤️ Hearts System</h4>
+                        <p>Gamified learning with hearts that encourage consistent practice</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🏆 Leaderboard</h4>
+                        <p>Compete with other learners and track your progress</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🎯 Quest System</h4>
+                        <p>Complete quests to earn rewards and stay motivated</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🛒 Shop</h4>
+                        <p>Purchase hearts and unlimited subscriptions</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>💳 Payments</h4>
+                        <p>Integrated Stripe payment processing</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>👨‍💼 Admin Panel</h4>
+                        <p>Comprehensive React Admin panel for content management</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📱 Responsive Design</h4>
+                        <p>Beautiful UI that works on all devices</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🔊 Audio Support</h4>
+                        <p>Pronunciation audio for language learning</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📊 Progress Tracking</h4>
+                        <p>Detailed progress tracking and statistics</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>🌍 Multiple Languages</h4>
+                        <p>Support for multiple language courses</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tech Stack -->
+            <section id="tech-stack" class="section">
+                <h2>🛠️ Tech Stack</h2>
+                <p>Lango is built with modern, production-ready technologies:</p>
+                
+                <div class="tech-stack">
+                    <span class="tech-badge">Next.js 14</span>
+                    <span class="tech-badge">React 18</span>
+                    <span class="tech-badge">TypeScript</span>
+                    <span class="tech-badge">Tailwind CSS</span>
+                    <span class="tech-badge">Drizzle ORM</span>
+                    <span class="tech-badge">PostgreSQL</span>
+                    <span class="tech-badge">Neon Database</span>
+                    <span class="tech-badge">Clerk Auth</span>
+                    <span class="tech-badge">Stripe</span>
+                    <span class="tech-badge">React Admin</span>
+                    <span class="tech-badge">Zustand</span>
+                    <span class="tech-badge">Sonner</span>
+                    <span class="tech-badge">Lottie</span>
+                </div>
+
+                <h3>Key Libraries</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Library</th>
+                            <th>Purpose</th>
+                            <th>Version</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Next.js</strong></td>
+                            <td>React Framework</td>
+                            <td>14.2.2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Clerk</strong></td>
+                            <td>Authentication</td>
+                            <td>5.0.5</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Drizzle ORM</strong></td>
+                            <td>Database ORM</td>
+                            <td>0.31.1</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Stripe</strong></td>
+                            <td>Payment Processing</td>
+                            <td>15.8.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>React Admin</strong></td>
+                            <td>Admin Panel</td>
+                            <td>4.16.18</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zustand</strong></td>
+                            <td>State Management</td>
+                            <td>4.5.2</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Requirements -->
+            <section id="requirements" class="section">
+                <h2>📋 Requirements</h2>
+                <p>Before installing Lango, ensure you have the following:</p>
+                
+                <h3>System Requirements</h3>
+                <ul>
+                    <li><strong>Node.js:</strong> Version 18.0.0 or higher</li>
+                    <li><strong>Package Manager:</strong> npm, pnpm, or yarn</li>
+                    <li><strong>Code Editor:</strong> VS Code recommended</li>
+                </ul>
+
+                <h3>Required Accounts & Services</h3>
+                <ul>
+                    <li><strong>Clerk:</strong> For authentication (<a href="https://clerk.com" target="_blank">clerk.com</a>)</li>
+                    <li><strong>Neon:</strong> For PostgreSQL database (<a href="https://neon.tech" target="_blank">neon.tech</a>)</li>
+                    <li><strong>Stripe:</strong> For payment processing (optional, <a href="https://stripe.com" target="_blank">stripe.com</a>)</li>
+                </ul>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Important:</strong> All required services offer free tiers suitable for development and testing. Production deployment may require paid plans.
+                </div>
+            </section>
+
+            <!-- Installation -->
+            <section id="installation" class="section">
+                <h2>🚀 Installation</h2>
+                <p>Follow these steps to install and set up Lango on your local machine:</p>
+
+                <h3><span class="step-number">1</span>Extract Files</h3>
+                <p>Extract the downloaded ZIP file to your desired location.</p>
+
+                <h3><span class="step-number">2</span>Navigate to Directory</h3>
+                <div class="code-block">
+<code>cd lango</code>
+                </div>
+
+                <h3><span class="step-number">3</span>Install Dependencies</h3>
+                <p>Choose your preferred package manager:</p>
+                
+                <div class="code-block">
+<code># Using npm
+npm install
+
+# Using pnpm (recommended)
+pnpm install
+
+# Using yarn
+yarn install</code>
+                </div>
+
+                <div class="alert alert-info">
+                    <strong>💡 Tip:</strong> This project is configured for pnpm. If you don't have pnpm installed, run: <span class="inline-code">npm install -g pnpm</span>
+                </div>
+
+                <h3><span class="step-number">4</span>Verify Installation</h3>
+                <p>Check if all dependencies are installed correctly:</p>
+                <div class="code-block">
+<code>npm list --depth=0</code>
+                </div>
+            </section>
+
+            <!-- Configuration -->
+            <section id="configuration" class="section">
+                <h2>⚙️ Configuration</h2>
+                <p>Configure your environment variables to connect all services:</p>
+
+                <h3><span class="step-number">1</span>Create Environment File</h3>
+                <p>Create a <span class="inline-code">.env.local</span> file in the root directory:</p>
+                <div class="code-block">
+<code>touch .env.local</code>
+                </div>
+
+                <h3><span class="step-number">2</span>Add Environment Variables</h3>
+                <p>Add the following variables to your <span class="inline-code">.env.local</span> file:</p>
+                
+                <div class="code-block">
+<code># ============================================
+# DATABASE
+# ============================================
+DATABASE_URL=your_neon_database_url_here
+
+# ============================================
+# CLERK AUTHENTICATION
+# ============================================
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxx
+CLERK_SECRET_KEY=sk_test_xxxxx
+
+# Clerk Redirect URLs (Development)
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/learn
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/learn
+
+# ============================================
+# ADMIN PANEL ACCESS
+# ============================================
+ADMIN_USER_ID=your_clerk_user_id_here
+
+# For multiple admins, separate with commas:
+# ADMIN_USER_ID=user_id_1,user_id_2,user_id_3
+
+# ============================================
+# STRIPE PAYMENT (Optional)
+# ============================================
+STRIPE_API_SECRET_KEY=sk_test_xxxxx
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+# Stripe Webhook (for production)
+STRIPE_WEBHOOK_SECRET=whsec_xxxxx</code>
+                </div>
+
+                <h3>Getting Your API Keys</h3>
+                
+                <h4>1. Neon Database URL</h4>
+                <ol>
+                    <li>Go to <a href="https://console.neon.tech" target="_blank">console.neon.tech</a></li>
+                    <li>Create a new project or select existing one</li>
+                    <li>Navigate to "Connection Details"</li>
+                    <li>Copy the connection string (pooled connection recommended)</li>
+                    <li>Paste it as your <span class="inline-code">DATABASE_URL</span></li>
+                </ol>
+
+                <h4>2. Clerk Authentication Keys</h4>
+                <ol>
+                    <li>Go to <a href="https://dashboard.clerk.com" target="_blank">dashboard.clerk.com</a></li>
+                    <li>Create a new application or select existing one</li>
+                    <li>Navigate to "API Keys" in the sidebar</li>
+                    <li>Copy the "Publishable Key" and "Secret Key"</li>
+                    <li>Paste them into your environment file</li>
+                </ol>
+
+                <h4>3. Admin User ID</h4>
+                <ol>
+                    <li>Start your development server (see Usage Guide)</li>
+                    <li>Sign up or sign in to your application</li>
+                    <li>Go back to Clerk Dashboard → Users</li>
+                    <li>Click on your user account</li>
+                    <li>Copy the "User ID" from the user details</li>
+                    <li>Add it to <span class="inline-code">ADMIN_USER_ID</span> in your environment file</li>
+                </ol>
+
+                <h4>4. Stripe Keys (Optional)</h4>
+                <ol>
+                    <li>Go to <a href="https://dashboard.stripe.com" target="_blank">dashboard.stripe.com</a></li>
+                    <li>Navigate to "Developers" → "API keys"</li>
+                    <li>Use test keys for development</li>
+                    <li>Copy the "Secret key" and paste it as <span class="inline-code">STRIPE_API_SECRET_KEY</span></li>
+                </ol>
+
+                <div class="alert alert-danger">
+                    <strong>🔒 Security Warning:</strong> Never share or publicly expose your <span class="inline-code">.env.local</span> file. Keep it secure and private at all times.
+                </div>
+            </section>
+
+            <!-- Database Setup -->
+            <section id="database" class="section">
+                <h2>🗄️ Database Setup</h2>
+                <p>Set up and populate your database with the following steps:</p>
+
+                <h3><span class="step-number">1</span>Push Database Schema</h3>
+                <p>Create all necessary tables in your database:</p>
+                <div class="code-block">
+<code>npm run db:push
+
+# Or with npx
+npx drizzle-kit push</code>
+                </div>
+                <p>This command will create the following tables:</p>
+                <ul>
+                    <li><span class="inline-code">courses</span> - Language courses</li>
+                    <li><span class="inline-code">units</span> - Course units</li>
+                    <li><span class="inline-code">lessons</span> - Individual lessons</li>
+                    <li><span class="inline-code">challenges</span> - Learning challenges</li>
+                    <li><span class="inline-code">challenge_options</span> - Answer options</li>
+                    <li><span class="inline-code">challenge_progress</span> - User progress tracking</li>
+                    <li><span class="inline-code">user_progress</span> - Overall user progress</li>
+                    <li><span class="inline-code">user_subscription</span> - Subscription management</li>
+                </ul>
+
+                <h3><span class="step-number">2</span>Seed Database</h3>
+                <p>Populate your database with sample data (courses, lessons, challenges):</p>
+                <div class="code-block">
+<code>npm run db:seed</code>
+                </div>
+                <p>This will add:</p>
+                <ul>
+                    <li>4 Language courses (Spanish, Italian, French, Croatian)</li>
+                    <li>Sample units and lessons</li>
+                    <li>Interactive challenges with audio</li>
+                    <li>Challenge options (correct and incorrect answers)</li>
+                </ul>
+
+                <h3><span class="step-number">3</span>View Database (Optional)</h3>
+                <p>Open Drizzle Studio to view and manage your database:</p>
+                <div class="code-block">
+<code>npm run db:studio</code>
+                </div>
+                <p>This will open a visual database browser at <span class="inline-code">https://local.drizzle.studio</span></p>
+
+                <div class="alert alert-info">
+                    <strong>💡 Note:</strong> The seed script includes sample Spanish lessons. You can modify <span class="inline-code">src/server/scripts/seed.ts</span> to add your own content.
+                </div>
+            </section>
+
+            <!-- Admin Panel -->
+            <section id="admin-panel" class="section">
+                <h2>👨‍💼 Admin Panel</h2>
+                <p>The admin panel allows you to manage all content without touching the database directly.</p>
+
+                <h3>Accessing Admin Panel</h3>
+                <ol>
+                    <li>Ensure you've added your User ID to <span class="inline-code">ADMIN_USER_ID</span> in <span class="inline-code">.env.local</span></li>
+                    <li>Restart your development server</li>
+                    <li>Sign in to your application</li>
+                    <li>Navigate to <span class="inline-code">http://localhost:3000/admin</span></li>
+                </ol>
+
+                <h3>Admin Features</h3>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h4>📚 Courses</h4>
+                        <p>Create, edit, and delete language courses</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📖 Units</h4>
+                        <p>Manage course units and their order</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>📝 Lessons</h4>
+                        <p>Create and organize lessons within units</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>❓ Challenges</h4>
+                        <p>Add SELECT and ASSIST type challenges</p>
+                    </div>
+                    <div class="feature-card">
+                        <h4>✅ Challenge Options</h4>
+                        <p>Manage answer options with images and audio</p>
+                    </div>
+                </div>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Important:</strong> Only users whose ID is in <span class="inline-code">ADMIN_USER_ID</span> can access the admin panel. Other users will be redirected to the home page.
+                </div>
+            </section>
+
+            <!-- Usage Guide -->
+            <section id="usage" class="section">
+                <h2>📱 Usage Guide</h2>
+                
+                <h3>Starting the Application</h3>
+                <div class="code-block">
+<code># Development mode
+npm run dev
+
+# Production build
+npm run build
+npm start</code>
+                </div>
+
+                <p>The application will be available at <span class="inline-code">http://localhost:3000</span></p>
+
+                <h3>User Flow</h3>
+                <h4>1. Authentication</h4>
+                <ul>
+                    <li>Users land on the marketing page</li>
+                    <li>Click "Get Started" to sign up</li>
+                    <li>Sign up with email or social providers (Google, etc.)</li>
+                    <li>After authentication, redirect to <span class="inline-code">/learn</span></li>
+                </ul>
+
+                <h4>2. Course Selection</h4>
+                <ul>
+                    <li>Navigate to <span class="inline-code">/courses</span></li>
+                    <li>Choose a language course</li>
+                    <li>Course becomes active</li>
+                </ul>
+
+                <h4>3. Learning</h4>
+                <ul>
+                    <li>View units and lessons on <span class="inline-code">/learn</span></li>
+                    <li>Click on a lesson to start</li>
+                    <li>Complete challenges to progress</li>
+                    <li>Earn points and track progress</li>
+                </ul>
+
+                <h3>Application Structure</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Route</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="inline-code">/</span></td>
+                            <td>Marketing/landing page</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/sign-in</span></td>
+                            <td>Sign in page</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/sign-up</span></td>
+                            <td>Sign up page</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/learn</span></td>
+                            <td>Main learning dashboard</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/courses</span></td>
+                            <td>Course selection</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/lesson/[id]</span></td>
+                            <td>Individual lesson</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/leaderboard</span></td>
+                            <td>Top users ranking</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/quests</span></td>
+                            <td>Quest tracking</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/shop</span></td>
+                            <td>Purchase hearts and subscriptions</td>
+                        </tr>
+                        <tr>
+                            <td><span class="inline-code">/admin</span></td>
+                            <td>Admin panel (protected)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Customization -->
+            <section id="customization" class="section">
+                <h2>🎨 Customization</h2>
+                
+                <h3>Branding & Styling</h3>
+                <h4>Logo & Name</h4>
+                <p>Update your app name and logo in:</p>
+                <ul>
+                    <li><span class="inline-code">src/app/(marketing)/header.tsx</span> - Marketing header</li>
+                    <li><span class="inline-code">src/components/Sidebar.tsx</span> - App sidebar</li>
+                    <li><span class="inline-code">src/app/layout.tsx</span> - Site metadata</li>
+                    <li><span class="inline-code">public/mascot-animation.json</span> - Animated mascot</li>
+                </ul>
+
+                <h4>Colors & Theme</h4>
+                <p>The app uses a green color scheme. Main colors:</p>
+                <ul>
+                    <li><strong>Primary Green:</strong> <span class="inline-code">#22c55e</span> (green-500)</li>
+                    <li><strong>Dark Green:</strong> <span class="inline-code">#16a34a</span> (green-600)</li>
+                    <li><strong>Light Blue:</strong> <span class="inline-code">#0ea5e9</span> (sky-500)</li>
+                </ul>
+
+                <h3>Content Customization</h3>
+                <h4>Adding New Languages</h4>
+                <ol>
+                    <li>Add flag SVG to <span class="inline-code">/public</span> folder</li>
+                    <li>Add audio files (optional) to <span class="inline-code">/public</span></li>
+                    <li>Use admin panel or modify seed script</li>
+                    <li>Create course with units, lessons, and challenges</li>
+                </ol>
+            </section>
+
+            <!-- Deployment -->
+            <section id="deployment" class="section">
+                <h2>🚀 Deployment</h2>
+                
+                <h3>Deploy to Vercel (Recommended)</h3>
+                <ol>
+                    <li>Go to <a href="https://vercel.com" target="_blank">vercel.com</a></li>
+                    <li>Click "Import Project"</li>
+                    <li>Upload your project files or connect via Git</li>
+                    <li>Add environment variables in Vercel dashboard</li>
+                    <li>Deploy!</li>
+                </ol>
+
+                <div class="alert alert-warning">
+                    <strong>⚠️ Important:</strong> Make sure all environment variables are set in your production environment. Missing variables will cause the application to fail.
+                </div>
+            </section>
+
+            <!-- Troubleshooting -->
+            <section id="troubleshooting" class="section">
+                <h2>🔧 Troubleshooting</h2>
+                
+                <h3>Common Issues</h3>
+                
+                <h4>Database Connection Error</h4>
+                <div class="alert alert-danger">
+                    <strong>Error:</strong> "Failed to connect to database"
+                </div>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Verify <span class="inline-code">DATABASE_URL</span> is correct</li>
+                    <li>Ensure your Neon database is active</li>
+                    <li>Check if you're using the pooled connection URL</li>
+                    <li>Test connection with: <span class="inline-code">npx drizzle-kit push</span></li>
+                </ul>
+
+                <h4>No Courses Showing</h4>
+                <div class="alert alert-danger">
+                    <strong>Error:</strong> Empty course page
+                </div>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Run seed script: <span class="inline-code">npm run db:seed</span></li>
+                    <li>Check database has data: <span class="inline-code">npm run db:studio</span></li>
+                    <li>Refresh your browser</li>
+                </ul>
+
+                <h4>Admin Panel Not Accessible</h4>
+                <div class="alert alert-danger">
+                    <strong>Error:</strong> Redirected from /admin to home
+                </div>
+                <p><strong>Solution:</strong></p>
+                <ul>
+                    <li>Ensure <span class="inline-code">ADMIN_USER_ID</span> is set in <span class="inline-code">.env.local</span></li>
+                    <li>Verify you're using the correct User ID from Clerk</li>
+                    <li>Restart your development server</li>
+                    <li>Sign out and sign back in</li>
+                </ul>
+            </section>
+
+            <!-- API Reference -->
+            <section id="api" class="section">
+                <h2>📡 API Reference</h2>
+                <p>Lango includes REST API endpoints for the admin panel and app functionality.</p>
+
+                <h3>API Endpoints</h3>
+                
+                <h4>Courses API</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Method</th>
+                            <th>Endpoint</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>GET</strong></td>
+                            <td><span class="inline-code">/api/courses</span></td>
+                            <td>List all courses</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GET</strong></td>
+                            <td><span class="inline-code">/api/courses/[id]</span></td>
+                            <td>Get course by ID</td>
+                        </tr>
+                        <tr>
+                            <td><strong>POST</strong></td>
+                            <td><span class="inline-code">/api/courses</span></td>
+                            <td>Create new course</td>
+                        </tr>
+                        <tr>
+                            <td><strong>PUT</strong></td>
+                            <td><span class="inline-code">/api/courses/[id]</span></td>
+                            <td>Update course</td>
+                        </tr>
+                        <tr>
+                            <td><strong>DELETE</strong></td>
+                            <td><span class="inline-code">/api/courses/[id]</span></td>
+                            <td>Delete course</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Support -->
+            <section id="support" class="section">
+                <h2>💬 Support</h2>
+                
+                <h3>Documentation Resources</h3>
+                <ul>
+                    <li><strong>Next.js:</strong> <a href="https://nextjs.org/docs" target="_blank">nextjs.org/docs</a></li>
+                    <li><strong>Clerk:</strong> <a href="https://clerk.com/docs" target="_blank">clerk.com/docs</a></li>
+                    <li><strong>Drizzle ORM:</strong> <a href="https://orm.drizzle.team" target="_blank">orm.drizzle.team</a></li>
+                    <li><strong>Stripe:</strong> <a href="https://stripe.com/docs" target="_blank">stripe.com/docs</a></li>
+                    <li><strong>React Admin:</strong> <a href="https://marmelab.com/react-admin" target="_blank">marmelab.com/react-admin</a></li>
+                </ul>
+
+                <div class="alert alert-success">
+                    <strong>✅ Thank you for purchasing Lango!</strong><br>
+                    We hope this application serves you well. Please rate and review on CodeCanyon if you're satisfied!
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <div style="text-align: center; padding: 50px 0; color: #94a3b8; border-top: 2px solid #e2e8f0; margin-top: 60px;">
+                <p style="font-size: 1.2em; font-weight: 700; color: #16a34a; margin-bottom: 10px;">Lango - Interactive Language Learning Platform</p>
+                <p style="font-weight: 600;">Built with ❤️ using Next.js 14, React, and TypeScript</p>
+                <p style="margin-top: 15px; font-size: 0.9em;">Animations powered by <a href="https://lottiefiles.com" target="_blank" style="color: #16a34a; font-weight: 700;">Lottie</a> • <a href="https://github.com/Gamegoo-repo/lottie-react" target="_blank" style="color: #16a34a; font-weight: 700;">lottie-react</a></p>
+                <p style="margin-top: 10px; font-size: 0.95em;">© 2024 Lango. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section in sidebar
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.sidebar a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (window.pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

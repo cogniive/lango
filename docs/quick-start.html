@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lango - Quick Start Guide</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #334155;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            padding: 30px;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+            padding: 50px 40px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 12px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            font-weight: 600;
+        }
+
+        .content {
+            padding: 50px;
+        }
+
+        .intro {
+            background: #dcfce7;
+            padding: 30px;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            border-left: 5px solid #22c55e;
+        }
+
+        .intro p {
+            font-size: 1.1em;
+            color: #166534;
+            font-weight: 600;
+            line-height: 1.8;
+        }
+
+        .step {
+            margin-bottom: 50px;
+            padding: 35px;
+            background: #f8fafc;
+            border-radius: 16px;
+            border-left: 6px solid #22c55e;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: #22c55e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-center;
+            font-size: 1.8em;
+            font-weight: 800;
+            margin-right: 20px;
+            flex-shrink: 0;
+            border-bottom: 4px solid #16a34a;
+        }
+
+        .step-title {
+            font-size: 1.75em;
+            color: #16a34a;
+            font-weight: 800;
+            letter-spacing: -0.01em;
+        }
+
+        .step-content p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .step-content ul {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .step-content li {
+            margin-bottom: 10px;
+            color: #475569;
+            font-weight: 500;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 24px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.7;
+            border: 2px solid #334155;
+        }
+
+        .code-block code {
+            color: #e2e8f0;
+        }
+
+        .inline-code {
+            background: #f1f5f9;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+            color: #16a34a;
+            font-size: 0.9em;
+            border: 1px solid #e2e8f0;
+            font-weight: 700;
+        }
+
+        .alert {
+            padding: 18px 24px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid;
+            font-weight: 600;
+        }
+
+        .alert-info {
+            background: #dbeafe;
+            border-color: #3b82f6;
+            color: #1e40af;
+        }
+
+        .alert-warning {
+            background: #fef3c7;
+            border-color: #f59e0b;
+            color: #92400e;
+        }
+
+        .alert-success {
+            background: #dcfce7;
+            border-color: #22c55e;
+            color: #166534;
+        }
+
+        .alert-danger {
+            background: #fee2e2;
+            border-color: #ef4444;
+            color: #991b1b;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #22c55e;
+            color: white;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            margin: 12px 12px 12px 0;
+            font-weight: 700;
+            border-bottom: 4px solid #16a34a;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 0.05em;
+        }
+
+        .btn:hover {
+            background: #16a34a;
+            transform: translateY(-2px);
+        }
+
+        .btn:active {
+            border-bottom: 2px solid #16a34a;
+            transform: translateY(0);
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 30px;
+            text-align: center;
+            color: #94a3b8;
+            font-weight: 600;
+            border-top: 2px solid #e2e8f0;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        .footer strong {
+            color: #16a34a;
+            font-weight: 800;
+        }
+
+        strong {
+            color: #1e293b;
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .container {
+                border-radius: 16px;
+            }
+            
+            header {
+                padding: 35px 25px;
+            }
+            
+            header h1 {
+                font-size: 2.2em;
+            }
+            
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .step {
+                padding: 25px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Quick Start Guide</h1>
+            <p>Get Lango Up and Running in Minutes</p>
+        </header>
+
+        <div class="content">
+            <div class="intro">
+                <p>This quick start guide will help you get Lango installed and running on your local machine in just a few simple steps. Perfect for developers who want to get started quickly!</p>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <div class="step-title">Extract & Navigate</div>
+                </div>
+                <div class="step-content">
+                    <p>Extract the downloaded ZIP file to your preferred location and navigate to the project directory:</p>
+                    <div class="code-block">
+<code>cd lango</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <div class="step-title">Install Dependencies</div>
+                </div>
+                <div class="step-content">
+                    <p>Install all required packages using your preferred package manager:</p>
+                    <div class="code-block">
+<code># Using pnpm (recommended)
+pnpm install
+
+# Or using npm
+npm install
+
+# Or using yarn
+yarn install</code>
+                    </div>
+                    <div class="alert alert-info">
+                        <strong>💡 Tip:</strong> This project is configured for pnpm. Install it globally with: <span class="inline-code">npm install -g pnpm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <div class="step-title">Set Up Environment Variables</div>
+                </div>
+                <div class="step-content">
+                    <p>Create a <span class="inline-code">.env.local</span> file in the root directory and add your credentials:</p>
+                    <div class="code-block">
+<code># Database (Get from neon.tech)
+DATABASE_URL=your_neon_database_url
+
+# Clerk Authentication (Get from clerk.com)
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_xxxxx
+CLERK_SECRET_KEY=sk_test_xxxxx
+
+# Admin Access (Get from Clerk Dashboard after first login)
+ADMIN_USER_ID=your_clerk_user_id
+
+# Stripe (Optional - Get from stripe.com)
+STRIPE_API_SECRET_KEY=sk_test_xxxxx
+NEXT_PUBLIC_APP_URL=http://localhost:3000</code>
+                    </div>
+                    <p><strong>Where to get these values:</strong></p>
+                    <ul>
+                        <li><strong>Database URL:</strong> Create a project at <a href="https://neon.tech" target="_blank">neon.tech</a> and copy the connection string</li>
+                        <li><strong>Clerk Keys:</strong> Create an app at <a href="https://clerk.com" target="_blank">clerk.com</a> and find keys under "API Keys"</li>
+                        <li><strong>Admin User ID:</strong> Sign in to your app, then find your user ID in the Clerk dashboard</li>
+                        <li><strong>Stripe Key:</strong> (Optional) Get test keys from <a href="https://stripe.com" target="_blank">stripe.com</a> dashboard</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <div class="step-title">Set Up Database</div>
+                </div>
+                <div class="step-content">
+                    <p>Push the database schema and seed it with sample data:</p>
+                    <div class="code-block">
+<code># Push schema to database
+npm run db:push
+
+# Seed with sample data
+npm run db:seed</code>
+                    </div>
+                    <p>This will create all necessary tables and populate them with 4 language courses (Spanish, Italian, French, Croatian) plus sample lessons and challenges.</p>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <div class="step-title">Start Development Server</div>
+                </div>
+                <div class="step-content">
+                    <p>Run the development server:</p>
+                    <div class="code-block">
+<code>npm run dev</code>
+                    </div>
+                    <p>Open your browser and navigate to <span class="inline-code">http://localhost:3000</span></p>
+                    <div class="alert alert-success">
+                        <strong>✅ Success!</strong> Your Lango application should now be running. Sign up to create your first account!
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <div class="step-title">Access Admin Panel</div>
+                </div>
+                <div class="step-content">
+                    <p>To access the admin panel:</p>
+                    <ol>
+                        <li>Sign up/in to your application</li>
+                        <li>Go to Clerk Dashboard → Users</li>
+                        <li>Copy your User ID</li>
+                        <li>Add it to <span class="inline-code">ADMIN_USER_ID</span> in <span class="inline-code">.env.local</span></li>
+                        <li>Restart the dev server</li>
+                        <li>Visit <span class="inline-code">http://localhost:3000/admin</span></li>
+                    </ol>
+                    <div class="alert alert-info">
+                        <strong>💡 Note:</strong> The admin panel lets you create and manage courses, units, lessons, and challenges without touching the database directly.
+                    </div>
+                </div>
+            </div>
+
+            <!-- Next Steps -->
+            <div class="step" style="border-left-color: #3b82f6;">
+                <div class="step-header">
+                    <div class="step-number" style="background: #3b82f6; border-bottom-color: #2563eb;">🎯</div>
+                    <div class="step-title" style="color: #2563eb;">What's Next?</div>
+                </div>
+                <div class="step-content">
+                    <ul>
+                        <li><strong>Explore the App:</strong> Try out different language courses and challenges</li>
+                        <li><strong>Customize Content:</strong> Use the admin panel to add your own courses and lessons</li>
+                        <li><strong>Modify Branding:</strong> Update logos, colors, and app name to match your brand</li>
+                        <li><strong>Read Full Docs:</strong> Check <span class="inline-code">index.html</span> for comprehensive documentation</li>
+                        <li><strong>Deploy:</strong> When ready, deploy to Vercel or your preferred hosting platform</li>
+                    </ul>
+                    <a href="index.html" class="btn">View Full Documentation</a>
+                </div>
+            </div>
+
+            <div class="alert alert-warning">
+                <strong>⚠️ Important Security Note:</strong> Never commit your <span class="inline-code">.env.local</span> file to version control. Keep all API keys and secrets private.
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Lango - Interactive Language Learning Platform</strong></p>
+            <p>Built with ❤️ using Next.js 14, React, and TypeScript</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Animations powered by <a href="https://lottiefiles.com" target="_blank" style="color: #16a34a; font-weight: 700; text-decoration: none;">Lottie</a> • <a href="https://github.com/Gamegoo-repo/lottie-react" target="_blank" style="color: #16a34a; font-weight: 700; text-decoration: none;">lottie-react</a></p>
+            <p style="margin-top: 10px;">© 2024 Lango. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
