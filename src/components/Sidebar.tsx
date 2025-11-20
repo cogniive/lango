@@ -22,7 +22,7 @@ const Sidebar = async ({ className }: SidebarProps) => {
       <Logo />
 
       <div className="flex flex-1 flex-col gap-y-2">
-        <SidebarItem label="learn" href="/learn" iconSrc="/learn.svg" />
+        <SidebarItem label="learn" href="/home" iconSrc="/home.svg" />
 
         <SidebarItem
           href="/leaderboard"
@@ -30,8 +30,8 @@ const Sidebar = async ({ className }: SidebarProps) => {
           iconSrc="/leaderboard.svg"
         />
 
-        <SidebarItem href="/quests" label="quests" iconSrc="/quests.svg" />
-        <SidebarItem href="/shop" label="shop" iconSrc="/shop.svg" />
+        <SidebarItem href="/challenges" label="quests" iconSrc="/quests.svg" />
+        <SidebarItem href="/ai-tools" label="shop" iconSrc="/shop.svg" />
       </div>
 
       <Separator className="h-0.5" />

@@ -11,3 +11,6 @@ export { default as FeedWrapper } from "./FeedWrapper";
 export { default as StickyWrapper } from "./StickyWrapper";
 export { default as UserProgress } from "./UserProgress";
 export { default as UpgradeButton } from "./UpgradeButton";
+export { default as WeeklyStreaks } from "./WeeklyStreaks";
+export { default as LearningProgress } from "./LearningProgress";
+export { default as PromoCards } from "./PromoCards";

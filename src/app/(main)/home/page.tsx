@@ -6,6 +6,9 @@ import {
   UserProgress,
   Promo,
   Quests,
+  WeeklyStreaks,
+  LearningProgress,
+  PromoCards,
 } from "@/components";
 
 import {
@@ -50,7 +53,7 @@ const LearnPage = async () => {
   const isPro = !!userSubscription?.isActive;
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-4 lg:gap-[48px] px-6">
+    <div className="flex flex-col md:flex-row md:gap-4 lg:gap-[48px] px-6 pt-8">
       <div className="md:hidden border-b-2 py-3">
         <UserProgress
           activeCourse={userProgress.activeCourse}
@@ -61,6 +64,18 @@ const LearnPage = async () => {
       </div>
 
       <FeedWrapper>
+        <div className="mb-6 mt-12">
+          <WeeklyStreaks />
+        </div>
+
+        <div className="mb-6">
+          <LearningProgress />
+        </div>
+
+        <div className="mb-6">
+          <PromoCards />
+        </div>
+        
         {units.map((unit, i) => (
           <div key={i} className="mb-10 pt-6">
             <Unit
@@ -75,7 +90,7 @@ const LearnPage = async () => {
         ))}
       </FeedWrapper>
 
-      <StickyWrapper className="mt-6">
+      {/* <StickyWrapper className="mt-6">
         <UserProgress
           activeCourse={userProgress.activeCourse}
           hearts={userProgress.hearts}
@@ -85,7 +100,7 @@ const LearnPage = async () => {
 
         {!isPro && <Promo />}
         <Quests points={userProgress.points} />
-      </StickyWrapper>
+      </StickyWrapper> */}
     </div>
   );
 };

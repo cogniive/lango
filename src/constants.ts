@@ -28,23 +28,23 @@ export const quests = [
 
 export const sidebarItems = [
   {
-    href: "/learn",
-    label: "learn",
+    href: "/home",
+    label: "Home",
     iconSrc: "/learn.svg",
   },
   {
-    href: "/leaderboard",
-    label: "leaderboard",
+    href: "/guides",
+    label: "Guides",
     iconSrc: "/leaderboard.svg",
   },
   {
-    href: "/quests",
-    label: "quests",
+    href: "/challenges",
+    label: "Challenges",
     iconSrc: "/quests.svg",
   },
   {
-    href: "/shop",
-    label: "shop",
+    href: "/ai-tools",
+    label: "AI Tools",
     iconSrc: "/shop.svg",
   },
 ];

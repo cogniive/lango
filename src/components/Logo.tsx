@@ -7,7 +7,7 @@ type LogoProps = {
   href?: string;
 };
 
-const Logo = ({ href = "/learn" }: LogoProps) => {
+const Logo = ({ href = "/home" }: LogoProps) => {
   return (
     <Link href={href}>
       <div className="flex items-center gap-x-3 px-4 py-2">

@@ -51,8 +51,8 @@ export const upsertUserProgress = async (courseId: number) => {
       .where(eq(userProgress.userId, userId));
 
     revalidatePath("/courses");
-    revalidatePath("/learn");
-    redirect("/learn");
+    revalidatePath("/home");
+    redirect("/home");
   }
 
   await db.insert(userProgress).values({
@@ -63,8 +63,8 @@ export const upsertUserProgress = async (courseId: number) => {
   });
 
   revalidatePath("/courses");
-  revalidatePath("/learn");
-  redirect("/learn");
+  revalidatePath("/home");
+  redirect("/home");
 };
 
 export const reduceHearts = async (challengeId: number) => {
@@ -119,9 +119,9 @@ export const reduceHearts = async (challengeId: number) => {
     })
     .where(eq(userProgress.userId, userId));
 
-  revalidatePath("/shop");
-  revalidatePath("/learn");
-  revalidatePath("/quests");
+  revalidatePath("/ai-tools");
+  revalidatePath("/home");
+  revalidatePath("/challenges");
   revalidatePath("/leaderboard");
   revalidatePath(`/lesson/${lessonId}`);
 };
@@ -149,8 +149,8 @@ export const refillHearts = async () => {
     })
     .where(eq(userProgress.userId, currentUserProgress.userId));
 
-  revalidatePath("/shop");
-  revalidatePath("/learn");
-  revalidatePath("/quests");
+  revalidatePath("/ai-tools");
+  revalidatePath("/home");
+  revalidatePath("/challenges");
   revalidatePath("/leaderboard");
 };

@@ -61,7 +61,7 @@ const ExitModal = () => {
               className="w-full"
               onClick={() => {
                 close();
-                router.push("/learn");
+                router.push("/home");
               }}
             >
               End session

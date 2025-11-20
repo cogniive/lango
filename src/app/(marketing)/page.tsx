@@ -46,8 +46,8 @@ export default function HomePage() {
             <SignedOut>
               <SignUpButton
                 mode="modal"
-                forceRedirectUrl="/learn"
-                signInForceRedirectUrl="/learn"
+                forceRedirectUrl="/home"
+                signInForceRedirectUrl="/home"
               >
                 <Button size="lg" variant="secondary" className="w-full">
                   Get Started
@@ -56,8 +56,8 @@ export default function HomePage() {
 
               <SignInButton
                 mode="modal"
-                forceRedirectUrl="/learn"
-                signUpForceRedirectUrl="/learn"
+                forceRedirectUrl="/home"
+                signUpForceRedirectUrl="/home"
               >
                 <Button size="lg" variant="primaryOutline" className="w-full">
                   I already have an account
@@ -67,7 +67,7 @@ export default function HomePage() {
 
             <SignedIn>
               <Button size="lg" variant="secondary" className="w-full" asChild>
-                <Link href="/learn">Continue Learning</Link>
+                <Link href="/home">Continue Learning</Link>
               </Button>
             </SignedIn>
           </ClerkLoaded>

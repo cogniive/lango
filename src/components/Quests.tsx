@@ -14,7 +14,7 @@ const Quests = ({ points }: QuestsProps) => (
     <div className="flex items-center justify-between w-full">
       <h3 className="font-bold text-lg">Quests</h3>
 
-      <Link href="/quests">
+      <Link href="/challenges">
         <Button size="sm" variant="primaryOutline">
           View all
         </Button>

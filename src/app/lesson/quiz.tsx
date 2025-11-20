@@ -226,7 +226,7 @@ const Quiz = ({
         </div>
 
         <Footer
-          onCheck={() => router.push("/learn")}
+          onCheck={() => router.push("/home")}
           status="completed"
           lessonId={lessonId}
         />

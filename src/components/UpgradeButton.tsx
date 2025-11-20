@@ -27,7 +27,7 @@ const UpgradeButton = ({ isMobile }: UpgradeButtonProps) => {
     });
   };
 
-  const handleClick = () => (isMobile ? upgradePlan() : router.push("/shop"));
+  const handleClick = () => (isMobile ? upgradePlan() : router.push("/ai-tools"));
 
   return (
     <Button

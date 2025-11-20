@@ -25,7 +25,7 @@ const HeartsModal = () => {
 
   const onClick = () => {
     close();
-    router.push("/shop");
+    router.push("/ai-tools");
   };
 
   if (!isClient) {
