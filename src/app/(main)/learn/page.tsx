@@ -17,7 +17,6 @@ import {
 } from "@/server/db/queries";
 
 import Unit from "./unit";
-import Header from "./header";
 
 const LearnPage = async () => {
   const unitsData = getUnits();
@@ -62,8 +61,6 @@ const LearnPage = async () => {
       </div>
 
       <FeedWrapper>
-        <Header title={userProgress.activeCourse.title} />
-
         {units.map((unit, i) => (
           <div key={i} className="mb-10 pt-6">
             <Unit

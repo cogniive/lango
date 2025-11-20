@@ -10,7 +10,7 @@ type LogoProps = {
 const Logo = ({ href = "/learn" }: LogoProps) => {
   return (
     <Link href={href}>
-      <div className="flex items-center gap-x-3 px-4 py-8">
+      <div className="flex items-center gap-x-3 px-4 py-2">
         <LottieMascot width={40} height={40} />
 
         <h1 className="text-3xl font-extrabold tracking-wide text-green-600">

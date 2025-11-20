@@ -1,12 +1,11 @@
 import { Fragment, PropsWithChildren } from "react";
-import { MobileHeader, Sidebar } from "@/components";
+import { Header } from "@/components";
 
 const MainLayout = ({ children }: PropsWithChildren) => (
   <Fragment>
-    <MobileHeader />
-    <Sidebar className="hidden md:flex" />
+    <Header />
 
-    <main className="h-full pt-[60px] md:pl-[225px] lg:pl-[256px] md:pt-0">
+    <main className="h-full pt-[60px]">
       <div className="mx-auto h-full max-w-[1056px]">{children}</div>
     </main>
   </Fragment>
