@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Button } from "@/components/ui";
 import LottieMascot from "@/components/LottieMascot";
+import ChallengesSection from "@/components/ChallengesSection";
 
 import {
   ClerkLoaded,
@@ -15,64 +16,69 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="mx-auto flex flex-1 flex-col w-full max-w-screen-lg items-center justify-center gap-2 px-6 py-4 lg:flex-row">
-      <div className="relative mb-8 h-[240px] w-[240px] lg:mb-0 lg:h-[424px] lg:w-[424px] flex items-center justify-center">
-        <LottieMascot width={424} height={424} />
-      </div>
+    <>
+      <div className="mx-auto flex flex-1 flex-col w-full max-w-screen-lg items-center justify-center gap-2 px-6 py-4 lg:flex-row">
+        <div className="relative mb-8 h-[240px] w-[240px] lg:mb-0 lg:h-[424px] lg:w-[424px] flex items-center justify-center">
+          <LottieMascot width={424} height={424} />
+        </div>
 
-      <div className="flex flex-col items-center gap-y-8">
-        <h1 className="max-w-[480px] text-center text-xl font-bold text-neutral-600 lg:text-3xl">
-          Learn, refine, and master your language skills with Lango.
-        </h1>
+        <div className="flex flex-col items-center gap-y-8">
+          <h1 className="max-w-[480px] text-center text-xl font-bold text-neutral-600 lg:text-3xl">
+            Learn, refine, and master your language skills with Lango.
+          </h1>
 
-        <div className="flex flex-col w-full max-w-[330px] items-center gap-y-3">
-          <ClerkLoading>
-            <SignedOut>
-              <div className="flex flex-col gap-y-3">
-                <div className="h-[48px] w-[330px] animate-pulse bg-gray-200 ring ring-border rounded-xl" />
+          <div className="flex flex-col w-full max-w-[330px] items-center gap-y-3">
+            <ClerkLoading>
+              <SignedOut>
+                <div className="flex flex-col gap-y-3">
+                  <div className="h-[48px] w-[330px] animate-pulse bg-gray-200 ring ring-border rounded-xl" />
 
-                <div className="h-[48px] w-[330px] flex items-center justify-center ring ring-border rounded-xl">
-                  <div className=" h-5 w-56 animate-pulse bg-gray-200 rounded-xl" />
+                  <div className="h-[48px] w-[330px] flex items-center justify-center ring ring-border rounded-xl">
+                    <div className=" h-5 w-56 animate-pulse bg-gray-200 rounded-xl" />
+                  </div>
                 </div>
-              </div>
-            </SignedOut>
+              </SignedOut>
 
-            <SignedIn>
-              <div className="h-[48px] w-[330px] animate-pulse bg-gray-200 ring ring-border rounded-xl" />
-            </SignedIn>
-          </ClerkLoading>
+              <SignedIn>
+                <div className="h-[48px] w-[330px] animate-pulse bg-gray-200 ring ring-border rounded-xl" />
+              </SignedIn>
+            </ClerkLoading>
 
-          <ClerkLoaded>
-            <SignedOut>
-              <SignUpButton
-                mode="modal"
-                forceRedirectUrl="/home"
-                signInForceRedirectUrl="/home"
-              >
-                <Button size="lg" variant="secondary" className="w-full">
-                  Get Started
+            <ClerkLoaded>
+              <SignedOut>
+                <SignUpButton
+                  mode="modal"
+                  forceRedirectUrl="/home"
+                  signInForceRedirectUrl="/home"
+                >
+                  <Button size="lg" variant="secondary" className="w-full">
+                    Get Started
+                  </Button>
+                </SignUpButton>
+
+                <SignInButton
+                  mode="modal"
+                  forceRedirectUrl="/home"
+                  signUpForceRedirectUrl="/home"
+                >
+                  <Button size="lg" variant="primaryOutline" className="w-full">
+                    I already have an account
+                  </Button>
+                </SignInButton>
+              </SignedOut>
+
+              <SignedIn>
+                <Button size="lg" variant="secondary" className="w-full" asChild>
+                  <Link href="/home">Continue Learning</Link>
                 </Button>
-              </SignUpButton>
-
-              <SignInButton
-                mode="modal"
-                forceRedirectUrl="/home"
-                signUpForceRedirectUrl="/home"
-              >
-                <Button size="lg" variant="primaryOutline" className="w-full">
-                  I already have an account
-                </Button>
-              </SignInButton>
-            </SignedOut>
-
-            <SignedIn>
-              <Button size="lg" variant="secondary" className="w-full" asChild>
-                <Link href="/home">Continue Learning</Link>
-              </Button>
-            </SignedIn>
-          </ClerkLoaded>
+              </SignedIn>
+            </ClerkLoaded>
+          </div>
         </div>
       </div>
-    </div>
+
+      {/* Section 4: Challenges */}
+      <ChallengesSection />
+    </>
   );
 }

@@ -20,6 +20,7 @@ import {
 } from "@/server/db/queries";
 
 import Unit from "./unit";
+import ChallengesSection from "@/components/ChallengesSection";
 
 const LearnPage = async () => {
   const unitsData = getUnits();
@@ -74,6 +75,10 @@ const LearnPage = async () => {
 
         <div className="mb-6">
           <PromoCards />
+        </div>
+
+        <div className="mb-6">
+          <ChallengesSection />
         </div>
         
         {units.map((unit, i) => (
