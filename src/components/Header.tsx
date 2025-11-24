@@ -9,6 +9,7 @@ import { redirect } from "next/navigation";
 import { ClerkLoaded, ClerkLoading, SignedIn, UserButton } from "@clerk/nextjs";
 import { currentUser } from "@clerk/nextjs/server";
 import { Button } from "./ui";
+import HeaderNav from "@/components/HeaderNav";
 
 const Header = async () => {
   const userProgressData = getUserProgress();
@@ -33,24 +34,7 @@ const Header = async () => {
       <Logo />
 
       {/* Navigation Items */}
-      <nav className="hidden md:flex items-center gap-6">
-        {sidebarItems.map((item, index) => (
-          <Link 
-            key={index}
-            href={item.href} 
-            className="flex items-center gap-2 text-gray-400 hover:text-blue-600 transition-colors"
-          >
-            <Image 
-              src={item.iconSrc} 
-              alt={item.label}
-              width={20}
-              height={20}
-              className="object-contain"
-            />
-            <span className="font-medium capitalize">{item.label}</span>
-          </Link>
-        ))}
-      </nav>
+      <HeaderNav />
 
       {/* Right Side - Points and Profile */}
       <div className="flex items-center gap-4">
@@ -70,9 +54,9 @@ const Header = async () => {
                   className="h-[40px] w-[40px] animate-pulse bg-gray-200 ring ring-border"
                 />
   
-                <div className="flex flex-col h-[52px] w-[158px] gap-y-1 p-2">
-                  <div className="h-16 bg-gray-200 animate-pulse rounded-xl" />
+                <div className="flex flex-col h-[30px] w-[50px] gap-y-1 p-2">
                   <div className="h-12 bg-gray-200 animate-pulse rounded-xl" />
+                  {/* <div className="h-12 bg-gray-200 animate-pulse rounded-xl" /> */}
                 </div>
               </SignedIn>
             </ClerkLoading>

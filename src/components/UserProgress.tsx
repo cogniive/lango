@@ -19,7 +19,7 @@ const UserProgress = ({
   hasActiveSubscription,
 }: UserProgressProps) => (
   <div className="flex w-full items-center justify-between md:gap-x-0.5 lg:gap-x-2">
-    <Link href="/courses">
+    {/* <Link href="/courses">
       <Button variant="defaultOutline">
         <Image
           alt={activeCourse.title}
@@ -29,7 +29,7 @@ const UserProgress = ({
           className="rounded-md border"
         />
       </Button>
-    </Link>
+    </Link> */}
 
     <Link href="/ai-tools">
       <Button variant="defaultOutline" className="text-orange-500">
