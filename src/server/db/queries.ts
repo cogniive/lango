@@ -269,3 +269,146 @@ export const getTopTenUsers = cache(async () => {
 
   return data;
 });
+
+export const getGuide = (guideId: string) =>  ({
+    id: guideId,
+    title: "First Steps to Profit with AI",
+    subtitle: "The Foundation of AI Knowledge",
+    duration: "4 Unit - 4 Hours",
+    sections: [
+      {
+        id: 1,
+        title: "Opportunities with AI",
+        lessons: [
+          {
+            id: 1,
+            title: "Ways to Earn with AI",
+            duration: "4 min",
+            isFeatured: true,
+            icon: "👥",
+            description: "Discover various ways to generate income using AI technologies"
+          },
+          {
+            id: 2,
+            title: "The AI in Business",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 3,
+            title: "The AI in Creative Industry",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 4,
+            title: "The AI in Content Creation",
+            duration: "4 min",
+            isFeatured: false
+          }
+        ]
+      },
+      {
+        id: 2,
+        title: "Mastering ChatGPT-4",
+        lessons: [
+          {
+            id: 5,
+            title: "Getting Started With ChatGPT-4",
+            duration: "4 min",
+            isFeatured: true,
+            icon: "💻",
+            description: "Learn the basics of interacting with ChatGPT-4"
+          },
+          {
+            id: 6,
+            title: "The Role of Data in AI",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 7,
+            title: "Feeding Necessary Content",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 8,
+            title: "Adapting a Persona Tactic",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 9,
+            title: "Prompt Engineering In Marketing",
+            duration: "4 min",
+            isFeatured: false
+          }
+        ]
+      },
+      {
+        id: 3,
+        title: "Prompt Engineering Tactics",
+        lessons: [
+          {
+            id: 10,
+            title: "Step-Based Queries",
+            duration: "4 min",
+            isFeatured: true,
+            icon: "📝",
+            description: "Learn how to structure your prompts for better results"
+          },
+          {
+            id: 11,
+            title: "Example-Based Queries",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 12,
+            title: "Using Delimiters",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 13,
+            title: "Specifying Output Format",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 14,
+            title: "Advanced Prompts in E-Commerce",
+            duration: "4 min",
+            isFeatured: false
+          }
+        ]
+      },
+      {
+        id: 4,
+        title: "Different Types of AI",
+        lessons: [
+          {
+            id: 15,
+            title: "Bing AI, ChatGPT, Jasper",
+            duration: "4 min",
+            isFeatured: true,
+            icon: "🤖",
+            description: "Compare different AI tools and their use cases"
+          },
+          {
+            id: 16,
+            title: "Midjourney, Stable Diffusion, DALL-E 2",
+            duration: "4 min",
+            isFeatured: false
+          },
+          {
+            id: 17,
+            title: "HeyGen, Runway, Sora",
+            duration: "4 min",
+            isFeatured: false
+          }
+        ]
+      }
+    ]
+  });

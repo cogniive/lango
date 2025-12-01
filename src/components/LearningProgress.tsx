@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { Trophy } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-use";
 
 interface LearningProgressProps {
   category?: string;
@@ -17,6 +19,11 @@ const LearningProgress = ({
   progress = 25,
 }: LearningProgressProps) => {
   const router = useRouter();
+  const location = useLocation();
+  const [pathname, setPathname] = useState('');
+  useEffect(() => {
+    setPathname(window?.location?.pathname || '');
+  },[window])
   return (
     <div className="border-2 rounded-xl bg-white p-6">
       <div className="flex flex-col md:flex-row gap-6 items-center">
@@ -40,13 +47,13 @@ const LearningProgress = ({
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-3">
-            <Button
+            {pathname?.includes('home') ? <Button
               variant="defaultOutline"
               onClick={() => router.push("/guides")}
               className="border-2 border-purple-200 text-purple-600 hover:bg-purple-50 font-semibold"
             >
               Other guides
-            </Button>
+            </Button> : <></>}
             <Button 
               variant="primary"
               onClick={() => router.push("/guides")}

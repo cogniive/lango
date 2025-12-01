@@ -10,6 +10,7 @@ import {
   UserProgress,
   LearningProgress,
 } from "@/components";
+import RecommendedCourses from "@/components/RecommendedCourses";
 
 const GuidesPage = async () => {
   const userProgressData = getUserProgress();
@@ -23,6 +24,9 @@ const GuidesPage = async () => {
   if (!userProgress || !userProgress.activeCourse) {
     redirect("/courses");
   }
+  const handleChangeRouter = (id: number) => {
+    window.location.href = `/${id}`;
+  };
 
   const isPro = !!userSubscription?.isActive;
 
@@ -176,27 +180,7 @@ const GuidesPage = async () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {recommendedCourses.map((course) => (
-              <div
-                key={course.id}
-                className="group cursor-pointer rounded-xl border-2 border-neutral-200 hover:border-neutral-300 transition-all hover:shadow-md bg-white p-4"
-              >
-                <div className="flex items-start gap-4">
-                  {/* Icon */}
-                  <div className="flex-shrink-0 w-16 h-16 flex items-center justify-center text-4xl">
-                    {course.icon}
-                  </div>
-
-                  {/* Content */}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs text-neutral-600 mb-1">
-                      Lessons {course.lessons} • {course.levels} levels
-                    </p>
-                    <h3 className="font-bold text-neutral-900 text-base leading-tight">
-                      {course.title}
-                    </h3>
-                  </div>
-                </div>
-              </div>
+              <RecommendedCourses key={course.id.toString()} course={course} />
             ))}
           </div>
         </div>

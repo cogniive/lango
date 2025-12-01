@@ -74,8 +74,9 @@ export const challengesRelations = relations(challenges, ({ one, many }) => ({
     fields: [challenges.lessonId],
     references: [lessons.id],
   }),
-  challengeOptions: many(challengeOptions),
   challengeProgress: many(challengeProgress),
+  challengeOptions: many(challengeOptions),
+  userChallenges: many(userChallenges),
 }));
 
 export const challengeOptions = pgTable("challenge_options", {
@@ -144,3 +145,23 @@ export const userSubscription = pgTable("user_subscription", {
   stripePriceId: text("stripe_price_id").notNull(),
   stripeCurrentPeriodEnd: timestamp("stripe_current_period_end").notNull(),
 });
+
+export const userChallenges = pgTable("user_challenges", {
+  id: serial("id").primaryKey(),
+  userId: text("user_id").notNull(),
+  challengeId: integer("challenge_id")
+    .references(() => challenges.id, { onDelete: "cascade" })
+    .notNull(),
+  joinedAt: timestamp("joined_at").defaultNow().notNull(),
+});
+
+export const userChallengesRelations = relations(userChallenges, ({ one }) => ({
+  user: one(userProgress, {  // Changed from 'users' to 'userProgress'
+    fields: [userChallenges.userId],
+    references: [userProgress.userId],  // Reference the userId field in userProgress
+  }),
+  challenge: one(challenges, {
+    fields: [userChallenges.challengeId],
+    references: [challenges.id],
+  }),
+}));

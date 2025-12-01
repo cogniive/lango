@@ -1,4 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { OpenRouter } from '@openrouter/sdk';
+
+const openRouter = new OpenRouter({
+  apiKey: process.env.OPENROUTER_API_KEY
+});
 
 export async function POST(req: NextRequest) {
   try {
@@ -11,16 +16,14 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // TODO: Integrate with your AI service (OpenAI, Anthropic, etc.)
-    // Example with OpenAI:
-    // const response = await openai.chat.completions.create({
-    //   model: "gpt-3.5-turbo",
-    //   messages: [{ role: "user", content: message }],
-    // });
-    // const aiResponse = response.choices[0].message.content;
+    const response = await openRouter.chat.send({
+      model: "openai/gpt-4o",
+      messages: [{ role: "user", content: message }],
+    });
+    const aiResponse = response.choices[0].message.content;
 
     // For now, return a mock response
-    const aiResponse = `I received your message: "${message}". This is a placeholder response. Please integrate with your preferred AI service (OpenAI, Anthropic Claude, Google Gemini, etc.) by adding your API key and updating this endpoint.`;
+    // const aiResponse = `I received your message: "${message}". This is a placeholder response. Please integrate with your preferred AI service (OpenAI, Anthropic Claude, Google Gemini, etc.) by adding your API key and updating this endpoint.`;
 
     return NextResponse.json({
       response: aiResponse,

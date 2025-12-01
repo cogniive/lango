@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState } from "react";
 import { Progress } from "@/components/ui";
+import Link from "next/link";
 
 type FilterType = "all" | "completed";
 
@@ -110,27 +111,43 @@ const ChallengesPage = () => {
             <h2 className="text-2xl font-bold text-neutral-900 mb-6">
               My challenges
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6">
               {myChallenges.map((challenge) => (
-                <div
+                <Link
                   key={challenge.id}
-                  className="bg-white border-2 border-neutral-200 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow cursor-pointer"
+                  href={`/challenges/${challenge.id}`}
+                  className={`bg-gradient-to-br ${challenge.bgColor} rounded-2xl p-6 flex flex-col h-full hover:shadow-md transition-shadow`}
                 >
-                  <div
-                    className={`h-32 bg-gradient-to-br ${challenge.bgColor} flex items-center justify-center relative`}
-                  >
-                    <div className="text-6xl">🎯</div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between mb-4">
+                      <h3 className="text-lg font-semibold text-neutral-800">
+                        {challenge.title}
+                      </h3>
+                      <div className="w-16 h-16 relative">
+                        {/* <Image
+                          src={challenge.image}
+                          alt={challenge.title}
+                          fill
+                          className="object-contain"
+                        /> */}
+                        <div className="text-7xl">🎯</div>
+                      </div>
+                    </div>
+                    <div className="mt-6">
+                      <div className="flex justify-between text-sm text-neutral-600 mb-2">
+                        <span>Progress</span>
+                        <span>{challenge.progress}%</span>
+                      </div>
+                      <Progress value={challenge.progress} className="h-2" />
+                      <div className="mt-2 text-sm text-neutral-500">
+                        {challenge.totalDays} days • {challenge.progress}% complete
+                      </div>
+                    </div>
                   </div>
-                  <div className="p-4">
-                    <h3 className="font-bold text-neutral-900 mb-2">
-                      {challenge.title}
-                    </h3>
-                    <p className="text-sm text-neutral-600 mb-3">
-                      Your progress: {challenge.progress} of {challenge.totalDays} Days
-                    </p>
-                    <Progress value={0} className="h-2" />
+                  <div className="mt-6 w-full bg-white text-neutral-900 py-3 rounded-lg font-medium text-center hover:bg-opacity-90 transition">
+                    {challenge.progress > 0 ? 'Continue' : 'Start'}
                   </div>
-                </div>
+                </Link>
               ))}
             </div>
           </div>
