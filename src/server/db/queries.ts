@@ -292,19 +292,22 @@ export const getGuide = (guideId: string) =>  ({
             id: 2,
             title: "The AI in Business",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "🏢"
           },
           {
             id: 3,
             title: "The AI in Creative Industry",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "🎨"
           },
           {
             id: 4,
             title: "The AI in Content Creation",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "✍️"
           }
         ]
       },
@@ -324,25 +327,29 @@ export const getGuide = (guideId: string) =>  ({
             id: 6,
             title: "The Role of Data in AI",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "📊"
           },
           {
             id: 7,
             title: "Feeding Necessary Content",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "📥"
           },
           {
             id: 8,
             title: "Adapting a Persona Tactic",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "👤"
           },
           {
             id: 9,
             title: "Prompt Engineering In Marketing",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "📢"
           }
         ]
       },
@@ -362,25 +369,29 @@ export const getGuide = (guideId: string) =>  ({
             id: 11,
             title: "Example-Based Queries",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "📋"
           },
           {
             id: 12,
             title: "Using Delimiters",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "🔠"
           },
           {
             id: 13,
             title: "Specifying Output Format",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "📄"
           },
           {
             id: 14,
             title: "Advanced Prompts in E-Commerce",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "🛍️"
           }
         ]
       },
@@ -400,13 +411,15 @@ export const getGuide = (guideId: string) =>  ({
             id: 16,
             title: "Midjourney, Stable Diffusion, DALL-E 2",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "🎨"
           },
           {
             id: 17,
             title: "HeyGen, Runway, Sora",
             duration: "4 min",
-            isFeatured: false
+            isFeatured: false,
+            icon: "🎬"
           }
         ]
       }

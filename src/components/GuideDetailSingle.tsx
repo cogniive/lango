@@ -2,7 +2,27 @@
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
-const GuideDetailSingle = ({section}) => {
+interface Lesson {
+  id: number | string;
+  title: string;
+  duration: string;
+  icon: React.ReactNode;
+  isFeatured?: boolean;
+  description?: string;
+}
+
+interface GuideSection {
+  id: number | string;
+  title: string;
+  lessons: Lesson[];
+}
+
+interface GuideDetailSingleProps {
+  section: GuideSection;
+  key: string | number;
+}
+
+const GuideDetailSingle = ({ section, key }: GuideDetailSingleProps) => {
     const [openSections, setOpenSections] = useState<Set<string>>(new Set());
       const toggleSection = (sectionId: string) => {
           const newOpenSections = new Set(openSections);
@@ -15,7 +35,7 @@ const GuideDetailSingle = ({section}) => {
         };
     const isOpen = openSections.has(section?.id.toString());
   return (
-        <div key={section.id} className="border rounded-xl overflow-hidden">
+        <div key={key} className="border rounded-xl overflow-hidden">
             <button
                 onClick={() => toggleSection(section?.id.toString())}
                 className="flex items-center justify-between w-full bg-gray-50 px-6 py-4 border-b cursor-pointer hover:bg-gray-100 transition-colors"
