@@ -19,10 +19,9 @@ interface GuideSection {
 
 interface GuideDetailSingleProps {
   section: GuideSection;
-  key: string | number;
 }
 
-const GuideDetailSingle = ({ section, key }: GuideDetailSingleProps) => {
+const GuideDetailSingle = ({ section }: GuideDetailSingleProps) => {
     const [openSections, setOpenSections] = useState<Set<string>>(new Set());
       const toggleSection = (sectionId: string) => {
           const newOpenSections = new Set(openSections);
@@ -35,7 +34,7 @@ const GuideDetailSingle = ({ section, key }: GuideDetailSingleProps) => {
         };
     const isOpen = openSections.has(section?.id.toString());
   return (
-        <div key={key} className="border rounded-xl overflow-hidden">
+        <div className="border rounded-xl overflow-hidden">
             <button
                 onClick={() => toggleSection(section?.id.toString())}
                 className="flex items-center justify-between w-full bg-gray-50 px-6 py-4 border-b cursor-pointer hover:bg-gray-100 transition-colors"

@@ -82,7 +82,9 @@ const GuideDetailPage = async ({
             <div className="space-y-4">
               {guide.sections.map((section) => {
                 return (
-                  <GuideDetailSingle section={section} key={section.id} />
+                  <div key={section.id}>
+                    <GuideDetailSingle section={section} />
+                  </div>
                 );
               })}
             </div>
