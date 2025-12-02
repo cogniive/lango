@@ -88,7 +88,7 @@ const ChallengePreview = ({
                 <p className="text-sm text-gray-500">Completed 28-Day Challenge</p>
               </div>
             </div>
-            <p className="text-gray-700">"This challenge completely transformed how I approach language learning. The daily lessons were engaging and I loved seeing my progress each week!"</p>
+            <p className="text-gray-700">&quot; This challenge completely transformed how I approach language learning. The daily lessons were engaging and I loved seeing my progress each week! &quot;</p>
           </div>
           <div className="bg-gray-50 rounded-xl p-6">
             <div className="flex items-center mb-4">
@@ -98,7 +98,7 @@ const ChallengePreview = ({
                 <p className="text-sm text-gray-500">Completed 14-Day Challenge</p>
               </div>
             </div>
-            <p className="text-gray-700">"I was a complete beginner when I started, but the structured approach made it so easy to follow. I can't believe how much I learned in just two weeks!"</p>
+            <p className="text-gray-700">&quot; I was a complete beginner when I started, but the structured approach made it so easy to follow. I can&apos;t believe how much I learned in just two weeks! &quot;</p>
           </div>
         </div>
       </div>
