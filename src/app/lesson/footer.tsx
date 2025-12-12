@@ -1,5 +1,3 @@
-"use client";
-
 import { useKey, useMedia } from "react-use";
 import { CheckCircle, XCircle } from "lucide-react";
 

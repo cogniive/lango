@@ -15,6 +15,7 @@ const Header = async () => {
   const userProgressData = getUserProgress();
   const userSubscriptionData = getUserSubscription();
   const user = await currentUser();
+
   const [userProgress, userSubscription] = await Promise.all([
     userProgressData,
     userSubscriptionData,
@@ -31,6 +32,7 @@ const Header = async () => {
     <div className="mx-auto max-w-[1040px] flex items-center justify-between px-6">
       {/* Logo */}
       <Logo />
+
       {/* Navigation Items */}
       <HeaderNav />
 
@@ -61,18 +63,31 @@ const Header = async () => {
   
             <ClerkLoaded>
               <SignedIn>
-                <Link href="/profile">
-                  <div className="flex items-center gap-x-3 cursor-pointer hover:bg-gray-50 rounded-lg p-2 transition-colors">
-                    <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-purple-600 rounded-full flex items-center justify-center text-white font-bold">
-                      {user?.firstName?.charAt(0) || "U"}
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-sm font-bold text-gray-900">
-                        {user?.firstName || "NA"}
-                      </span>
-                    </div>
-                  </div>
-                </Link>
+                <UserButton
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      userButtonPopoverCard: {
+                        pointerEvents: "initial",
+                        width: "300px",
+                      },
+                      userButtonAvatarBox: {
+                        height: "40px",
+                        width: "40px",
+                      },
+                    },
+                  }}
+                />
+  
+                <div className="flex flex-col w-full p-2">
+                  <span className="text-sm font-bold">
+                    {user?.firstName || "Anon"}
+                  </span>
+  
+                  {/* <span className="text-xs font-semibold">
+                    {user?.primaryEmailAddress?.emailAddress}
+                  </span> */}
+                </div>
               </SignedIn>
             </ClerkLoaded>
           </div>

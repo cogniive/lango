@@ -1,13 +1,10 @@
 import { twMerge } from "tailwind-merge";
 import { type ClassValue, clsx } from "clsx";
-import { usePathname } from "next/navigation";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
-export function getWindow() {
-  if (typeof window !== "undefined") return window;
-}
+
 export function absoluteUrl(path: string) {
   if (typeof window !== "undefined") return path;
 

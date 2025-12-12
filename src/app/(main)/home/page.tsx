@@ -21,7 +21,6 @@ import {
 
 import Unit from "./unit";
 import ChallengesSection from "@/components/ChallengesSection";
-import Link from "next/link";
 
 const LearnPage = async () => {
   const unitsData = getUnits();
@@ -66,11 +65,9 @@ const LearnPage = async () => {
       </div>
 
       <FeedWrapper>
-        <Link href="/streak-challenge">
-          <div className="mb-6 mt-12">
-            <WeeklyStreaks />
-          </div>
-        </Link>
+        <div className="mb-6 mt-12">
+          <WeeklyStreaks />
+        </div>
 
         <div className="mb-6">
           <LearningProgress />
@@ -83,6 +80,19 @@ const LearnPage = async () => {
         <div className="mb-6">
           <ChallengesSection />
         </div>
+        
+        {units.map((unit, i) => (
+          <div key={i} className="mb-10 pt-6">
+            <Unit
+              id={unit.id}
+              title={unit.title}
+              description={unit.description}
+              lessons={unit.lessons}
+              activeLesson={courseProgress.activeLesson}
+              activeLessonPercentage={lessonPercentage}
+            />
+          </div>
+        ))}
       </FeedWrapper>
 
       {/* <StickyWrapper className="mt-6">

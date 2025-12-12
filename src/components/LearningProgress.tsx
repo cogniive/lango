@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
-import { getWindow } from "@/lib/utils";
 import { Trophy } from "lucide-react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -21,11 +20,10 @@ const LearningProgress = ({
 }: LearningProgressProps) => {
   const router = useRouter();
   const location = useLocation();
-  const tWindow = getWindow();
   const [pathname, setPathname] = useState('');
   useEffect(() => {
-    setPathname(tWindow?.location?.pathname || '');
-  },[tWindow])
+    setPathname(window?.location?.pathname || '');
+  },[window])
   return (
     <div className="border-2 rounded-xl bg-white p-6">
       <div className="flex flex-col md:flex-row gap-6 items-center">
