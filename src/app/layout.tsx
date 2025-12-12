@@ -12,6 +12,11 @@ const font = Nunito({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "Lango",
   description: "Learn new languages at your own pace.",
+  icons: {
+    icon: "/mascot.svg",
+    shortcut: "/mascot.svg",
+    apple: "/mascot.svg",
+  },
 };
 
 export default function RootLayout({
