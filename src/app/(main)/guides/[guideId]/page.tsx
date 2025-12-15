@@ -54,7 +54,7 @@ const GuideDetailPage = async ({
       </div>
 
       <FeedWrapper>
-        <div className="mb-6">
+        <div className="mb-6 mt-5">
           <div className="flex items-center gap-4 mb-6">
             <Link href="/guides">
               <Button size="icon" className="h-10 w-10">
